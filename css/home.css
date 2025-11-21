@@ -203,3 +203,107 @@ header nav a:hover {
     from { transform: scale(0.8); opacity: 0; }
     to   { transform: scale(1); opacity: 1; }
 }
+
+
+/* ================== MEDLEMMER PREVIEW ================== */
+.members-preview {
+    padding: 120px 60px;
+    text-align: center;
+    background: #0a0d13;
+}
+.section-title h2 {
+    font-size: 48px;
+    margin: 0 0 16px 0;
+    color: #ffffff;
+}
+.section-title p {
+    color: #24cef8cc;
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.member-card-preview {
+    background: #11151f;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #1e2633;
+    transition: all 0.4s ease;
+    position: relative;
+}
+.member-card-preview:hover {
+    transform: translateY(-16px);
+    box-shadow: 0 25px 50px rgba(36, 206, 248, 0.25);
+    border-color: #24cef8cc;
+}
+.member-img {
+    position: relative;
+    overflow: hidden;
+}
+.member-img img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.member-card-preview:hover .member-img img {
+    transform: scale(1.08);
+}
+.img-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(36,206,248,0.7), transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.member-card-preview:hover .img-overlay { opacity: 1; }
+.btn-small {
+    padding: 12px 28px;
+    background: #000000;
+    color: #24cef8ff;
+    font-weight: 600;
+    border: 2px solid #24cef8ff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.btn-small:hover {
+    background: #24cef8ff;
+    color: #000;
+    transform: scale(1.05);
+}
+.member-text {
+    padding: 32px 28px;
+    text-align: center;
+}
+.member-text h3 {
+    font-size: 28px;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+}
+.member-text .role {
+    color: #24cef8cc;
+    font-size: 16px;
+    margin: 0 0 16px 0;
+    font-weight: 600;
+}
+.member-text .bio {
+    color: #cfcfcf;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .members-preview { padding: 100px 30px; }
+    .section-title h2 { font-size: 38px; }
+}
