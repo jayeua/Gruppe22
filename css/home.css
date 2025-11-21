@@ -27,7 +27,7 @@ header {
 
 header .logo {
     font-size: 24px;
-    color: #37ff8b;
+    color: #24cef8cc;
     font-weight: 700;
 }
 
@@ -45,7 +45,7 @@ header nav a {
 }
 
 header nav a:hover {
-    color: #37ff8b;
+    color: #24cef8cc;
 }
 
 /* HERO */
@@ -73,7 +73,7 @@ header nav a:hover {
 
 .btn {
     padding: 14px 24px;
-    background: #37ff8b;
+    background: #24cef8cc;
     color: #000;
     font-weight: 600;
     border-radius: 6px;
@@ -105,7 +105,7 @@ header nav a:hover {
 }
 
 .skill-box h3 {
-    color: #37ff8b;
+    color: #24cef8cc;
     margin-bottom: 10px;
 }
 
