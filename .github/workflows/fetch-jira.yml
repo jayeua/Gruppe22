@@ -24,6 +24,7 @@ jobs:
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           JIRA_JQL: ${{ secrets.JIRA_JQL }}
+          PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
           JIRA_MAX_RESULTS: ${{ secrets.JIRA_MAX_RESULTS }}
         run: |
           node scripts/fetch_jira.js
