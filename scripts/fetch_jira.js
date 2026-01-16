@@ -5,7 +5,17 @@ const path = require('path');
 const JIRA_BASE_URL = process.env.JIRA_BASE_URL;
 const JIRA_EMAIL = process.env.JIRA_EMAIL;
 const JIRA_API_TOKEN = process.env.JIRA_API_TOKEN;
-const JIRA_JQL = process.env.JIRA_JQL || 'ORDER BY updated DESC';
+const envJql = process.env.JIRA_JQL;
+const PROJECT_KEY = process.env.PROJECT_KEY;
+let JIRA_JQL = envJql || '';
+if (!JIRA_JQL) {
+  if (PROJECT_KEY) {
+    JIRA_JQL = `project = ${PROJECT_KEY} ORDER BY updated DESC`;
+  } else {
+    console.error('Missing JIRA_JQL and PROJECT_KEY; set one of these to limit the query (e.g. PROJECT_KEY=MYPROJ).');
+    process.exit(1);
+  }
+}
 const OUTPUT = process.env.OUTPUT_PATH || path.join(__dirname, '..', 'data', 'jira.json');
 const MAX_RESULTS = process.env.JIRA_MAX_RESULTS || '50';
 
