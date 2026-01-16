@@ -17,9 +17,9 @@ if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {
 async function fetchIssues() {
   const auth = Buffer.from(`${JIRA_EMAIL}:${JIRA_API_TOKEN}`).toString('base64');
   const base = JIRA_BASE_URL.replace(/\/$/, '');
-  const url = `${base}/rest/api/3/search?jql=${encodeURIComponent(JIRA_JQL)}&maxResults=${MAX_RESULTS}&fields=summary,issuetype,status,assignee,priority,labels,created,updated`;
+  const url = `${base}/rest/api/3/search/jql?jql=${encodeURIComponent(JIRA_JQL)}&maxResults=${MAX_RESULTS}&fields=summary,issuetype,status,assignee,priority,labels,created,updated`;
 
-  const res = await fetch(url, { headers: { Authorization: `Basic ${auth}`, Accept: 'application/json' } });
+  const res = await fetch(url, { headers: { Authorization: `Basic ${auth}`, Accept: 'application/json', 'Content-Type': 'application/json' } });
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`Jira API error ${res.status}: ${text}`);
