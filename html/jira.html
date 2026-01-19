@@ -57,10 +57,8 @@ open http://localhost:8000/html/jira.html</code></pre>
   </main>
 
   <script src="../js/jira_page.js"></script>
-  <script>
-    // in browser console
-    localStorage.removeItem('jira_kanban_state');
-    location.reload();
-  </script>
+  <!-- remove debug auto-reload that caused continuous reloads; to reset state run in console:
+       localStorage.removeItem('jira_kanban_state')
+  -->
 </body>
 </html>
