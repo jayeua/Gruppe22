@@ -234,25 +234,15 @@
   }
 
   function fetchAndRender(){
-    // try a normal fetch first; if the data is empty or missing, retry with cache-busting
-    function handleJson(json){
-      const issues = json.issues || [];
-      currentIssues = issues;
-      populateColumns(issues);
-      // if there is saved board state, restore positions
-      restoreBoardState();
-      updateStats(issues);
-    }
-
     fetch(DATA_PATH, { cache: 'no-store' })
       .then(r => { if (!r.ok) throw new Error('data not found'); return r.json(); })
       .then(json => {
-        if ((json.issues || []).length) return handleJson(json);
-        // empty result — try again with cache-busting query
-        const url = DATA_PATH + (DATA_PATH.includes('?') ? '&' : '?') + 't=' + Date.now();
-        return fetch(url, { cache: 'no-store' })
-          .then(r => { if (!r.ok) throw new Error('data not found'); return r.json(); })
-          .then(handleJson);
+        const issues = json.issues || [];
+        currentIssues = issues;
+        populateColumns(issues);
+        // if there is saved board state, restore positions
+        restoreBoardState();
+        updateStats(issues);
       })
       .catch(err => {
         areaEl.innerHTML = `<div class="error">Error loading data: ${err.message}</div>`;
